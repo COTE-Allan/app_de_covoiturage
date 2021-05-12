@@ -1,6 +1,6 @@
 <?php
 
-$loggedIn = false;
+
 
 ?>
 
@@ -47,9 +47,11 @@ $loggedIn = false;
                     </ul>
                 </div>
             </div>
-            <?php if($loggedIn == true){ ?>
+            <?php // Condition de Connecté
+            if (isset($_SESSION["user_connected_id"]) && $_SESSION["user_connected_id"] != 'disconnected') {
+            ?>
                 <a href=""><img src="" width="30" height="30" class="d-inline-block align-top" alt=""></a>
-            <?php }else{ ?>
+            <?php } else { ?>
                 <button class="btn btn-outline-success my-2 my-sm-0">Connexion</button>
             <?php } ?>
         </nav>

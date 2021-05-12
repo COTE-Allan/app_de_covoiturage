@@ -2,8 +2,15 @@
     Fichier CSS
 ----------------------------------------------- */
 
-/* Vérification de la bonne connexion */
 body {
     min-height: 100vh;
     background: #1C8ADB;
+}
+
+a {
+    color: #FFF;
+}
+
+a:hover {
+    color: #FFF;
 }

@@ -3,10 +3,6 @@
 ---------------------------------------------- -->
 
 <?php
-// Informations des Pages
-$pages = [
-    ['index.php', 'Base Développement'],
-];
 // Informations Connexion BDD
 define('BDD_NAME', 'carpooling');
 define('BDD_USER', 'root');

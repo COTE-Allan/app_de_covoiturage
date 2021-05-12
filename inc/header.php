@@ -14,6 +14,8 @@ require_once __DIR__ . '/../functions.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ceci est un exemple de méta description. Cela apparaîtra souvent dans les résultats de recherche.">
     <title><?= $pages[0][1]; ?></title>
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <!-- CSS Custom -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Favicon -->
@@ -25,4 +27,4 @@ require_once __DIR__ . '/../functions.php';
 
 
     </header>
-    <main>
+    <main class="container text-white">

@@ -23,4 +23,11 @@ function bdd_connect()
         // die();
     }
 }
+
+function add_user() {
+    
+}
+
+
+
 ?>

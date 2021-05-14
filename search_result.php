@@ -1,18 +1,13 @@
 <?php
 include "homepage_functions.php";
-
-// Variables :
-$the_last_rides = get_the_last_rides();
-if (empty($the_last_rides) || !isset($the_last_rides)) {
-    $the_last_rides = FALSE;
-};
-
 include "validation_simplified_search.php"
 
 ?>
 
 <!doctype html>
 <html lang="fr">
+
+
 
 <head>
     <!-- Required meta tags -->
@@ -26,13 +21,13 @@ include "validation_simplified_search.php"
 </head>
 
 <body>
+
     <div class="container">
-        <h1 class="my-5">Bienvenue !</h1>
-        <!-- FORMULAIRE Simplifié -->
+        <h1 class="my-5">Nouvelle recherche :</h1>
         <form method="GET" action="search_result.php">
             <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control text-center" placeholder="D'où partez-vous ?" name="starting_town">
+                    <input type="text" class="form-control text-center" placeholder="D'où partez-vous ?" name="starting_town" value="<?= $starting_town ?>">
                     <!-- Message d'erreur si l'entrée est défini sur TRUE (voir validation_simplified.php) -->
                     <?php
                     if ($the_starting_town == TRUE) {
@@ -42,7 +37,7 @@ include "validation_simplified_search.php"
                     <?php } ?>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control text-center" placeholder="Où allez-vous ?" name="going_town">
+                    <input type="text" class="form-control text-center" placeholder="Où allez-vous ?" name="going_town" value="<?= $going_town ?>">
                     <?php
                     if ($the_going_town == TRUE) {
                     ?>
@@ -51,7 +46,7 @@ include "validation_simplified_search.php"
                     <?php } ?>
                 </div>
                 <div class="col">
-                    <input type="date" class="form-control text-center" placeholder="Quand ça ?" name="ride_date">
+                    <input type="date" class="form-control text-center" placeholder="Quand ça ?" name="ride_date" value="<?= $ride_date ?>">
                     <?php
                     if ($the_ride_date == TRUE) {
                     ?>
@@ -66,46 +61,12 @@ include "validation_simplified_search.php"
                 </div>
             </div>
         </form>
-        <h1 class="my-5">Derniers trajets publiés :</h1>
-        <ul class="list-group list-group-flush">
-            <!-- Création des trajets récents : -->
-            <?php foreach ($the_last_rides as $the_ride) {
-                $the_ride_id = $the_ride[0];
-                $the_starting_town = $the_ride[1];
-                $the_going_town = $the_ride[2];
-                $the_ride_date = $the_ride[3];
-                $the_availables_seats = $the_ride[5];
-                $the_ride_price = $the_ride[6];
-            ?>
-                <li class="list-group-item d-flex justify-content-between">
-                    <p>
-                        <!-- Concaténation qui pique les yeux mais tkt -->
-                        <?=
-                        $the_starting_town . " -> " . $the_going_town . " | " . $the_ride_date . " | " . $the_availables_seats . " sièges restants | " . $the_ride_price . "€"
-                        ?>
-                    </p>
-                    <div>
-                        <!-- Connecté ou pas ? -->
-                        <?php
-                        if (isset($_SESSION["user_connected_id"]) && $_SESSION["user_connected_id"] != 'disconnected') { ?>
-                            <a href="?ride=<?= $the_ride_id ?>" class="p-2 btn-sm btn-primary text-decoration-none">Je prend !</a>
-                        <?php } else { ?>
-                            <a href="login.php" class="p-2 btn-sm btn-primary text-decoration-none">Je prend !</a>
-                        <?php } ?>
+        <?php if ($is_form_incorrect == FALSE) { ?>
+            <h1 class="my-5">Vos résultats :</h1>
+        <?php } ?>
 
-                    </div>
-                </li>
-            <?php
-            } ?>
-        </ul>
-        <!-- Si aucun trajet -->
-        <?php
-        if ($the_last_rides == FALSE) { ?>
-            <p class="display-4 text-center">Aucun trajets ici !</p>
-        <?php
-        }
-        ?>
     </div>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

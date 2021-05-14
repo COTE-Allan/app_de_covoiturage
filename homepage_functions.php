@@ -39,3 +39,13 @@ EOD;
     $total = $total_recipes_Stmt->fetchAll();
     return $total;
 }
+
+
+function if_form_is_correct($is_correct)
+{
+    if ($is_correct == TRUE) {
+        return "action=''";
+    } else {
+        return "action='search_result.php?search_type=simplified'";
+    }
+}
